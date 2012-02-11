@@ -1,7 +1,7 @@
 ##Linkification.js
-###linkificate (lynk - if - ah - kate): 
-####1. To make into a link
-####2. A js library for making said links out of internet nodes
+####linkificate (lynk - if - ah - kate): 
+######1. To make into a link
+######2. A js library for making said links out of internet nodes
 
 - @mentions
 - #hashtags
@@ -37,6 +37,7 @@ produces
   };
 ```
 
+###Usage
 ```javascript
   linkificate('@nort', { mention_target: 'http://plus.google.com/' });
   //=> @<a href='http://plus.google.com/nort'>nort</a>
