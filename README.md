@@ -27,20 +27,21 @@ produces
 ###API
 ```javascript
   var default_options = {
-    mention_flag: "@",
+    mention: "@",
     mention_target: "http://twitter.com/",
-    exclude_mention_flag: true,
-    tag_flag: "#",
+    exclude_mention: true,
     tag_target: "http://twitter.com/search?q=",
-    exclude_tag_flag: true
+    exclude_tag: true,
+    target: "_blank",
+    force: false
   };
 ```
 
 ```javascript
-  linkificate('@jack', { mention_target: 'http://plus.google.com/' });
-  //=> @<a href='http://plus.google.com/jack'>jack</a>
+  linkificate('@nort', { mention_target: 'http://plus.google.com/' });
+  //=> @<a href='http://plus.google.com/nort'>nort</a>
 
-  linkificate('@jack', { exclude_mention_flag: false });
-  //=> <a href='http://twitter.com/jack'>@jack</a>
+  linkificate('@nort', { exclude_mention_flag: false });
+  //=> <a href='http://twitter.com/nort'>@nort</a>
   
 ```
