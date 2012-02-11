@@ -1,31 +1,46 @@
 ##Linkification.js
+###linkificate (lynk - if - ah - kate): 
+####1. To make into a link
+####2. A js library for making said links out of internet nodes
 
-####A js library for adding links to internet nodes
-
-- URL's
 - @mentions
 - #hashtags
 
 ####Customize what node types links with take a user to
 
 ```javascript
-  var text = "This is an #amazingcomment to an @amazinguser telling him/her 
-  to visit some amazing link: bit.ly/gkd4Ka";
+  var text = "This is an #amazingcomment to an @amazinguser";
 
   var linkified = linkificate(text);
 
-  document.write("<p>" + linkified + "</p>");
-
+  $('.body').html($("<p>" + linkified + "</p>"));
 ```
 produces
 
 ```html
-  <p>
-    This is an 
-    <a href='http://twitter.com/search?q=amazingcontent'>#amazingcomment</a> 
-    to an 
-    @<a href='http://twitter.com/amazinguser'>amazinguser</a>
-    telling him/her to visit some amazing link: 
-    <a href='http://bit.ly/gkd4Ka'>bit.ly/gkd4Ka</a>
-  </p>
+  <div class='body'>
+    <p> This is an <a href='http://twitter.com/search?q=amazingcontent'>#amazingcomment</a> 
+    to an @<a href='http://twitter.com/amazinguser'>amazinguser</a> </p>
+  </div>
+```
+
+###API
+```javascript
+  var default_options = {
+    mention_flag: "@",
+    mention_target: "http://twitter.com/",
+    exclude_mention_flag: true,
+    tag_flag: "#",
+    tag_target: "http://twitter.com/search?q=",
+    exclude_tag_flag: true
+  };
+```
+
+```javascript
+  linkificate('@jack', { mention_target: 'http://plus.google.com/' });
+  //=> @<a href='http://plus.google.com/jack'>jack</a>
+
+  linkificate('@jack', { exclude_mention_flag: false });
+  //=> <a href='http://twitter.com/jack'>@jack</a>
+  
 ```
