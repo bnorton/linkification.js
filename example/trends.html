@@ -33,7 +33,7 @@
     };
 
     $(function(){ fetch_tweets(); });
-    $(function(){ setTimeout(fetch_tweets, 12500); });
+    $(function(){ setInterval(fetch_tweets, 7500); });
 
     var template = function(tweet) {
       t = [];
