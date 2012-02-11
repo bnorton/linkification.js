@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+  </head>
+  <body>
+    
+    <ul id="tweets">
+    <ul>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../lib/linkification.js"></script>
+    
+    <script>
+
+    var tweets = [], tweet_ids = [];
+
+    $(function(){
+      $.ajax({
+        url: 'https://api.twitter.com/1/statuses/public_timeline.json?count=3',
+        dataType: 'JSONP',
+        success: function(data) {
+          console.log('success');
+          for(i = 0; i < data.length; i++) {
+            tweet = data[i];
+            console.log(tweet);
+            if (tweet_ids.indexOf(tweet.id_str) == -1) {
+              $('#tweets').append(template(tweet));
+            }
+          }
+        },
+        error: function(){
+          console.log('error');
+        }
+      })
+    });
+
+    var template = function(tweet) {
+      t = [];
+      t.push("<li id='", tweet.id_str, "'>");
+      t.push(linkificate(tweet.text));
+      t.push("</li>");
+      return t.join("");
+    };
+    </script>
+  </body>
+</html>
